@@ -1,0 +1,85 @@
+$silver: #d8d5d4;
+$red: #d41514;
+$muted: #827c7a;
+$cube-size: 270px;
+$cube-depth: 135px;
+
+.skills-section { position: relative; overflow: hidden; padding: 6rem 6vw 5.5rem; background: radial-gradient(ellipse at 50% 65%, rgba($red,.09), transparent 46%), #080808; font-family: 'Inter', sans-serif; }
+.skills-container { max-width: 1120px; margin: 0 auto; }
+.skills-heading { max-width: 1200px; margin: 0 auto 1.2rem; text-align: left; }
+.skills-section .section-label { display: inline-block; color: $red; font-size: .68rem; font-weight: 650; letter-spacing: .24em; }
+.skills-section .accent-line { width: 36px; height: 2px; margin: .65rem 0 .9rem; background: $red; }
+.skills-section .section-headline { color: $silver; font-size: clamp(2rem,4vw,3rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.05; }
+.skills-intro { max-width: 480px; margin-top: .7rem; color: $muted; font-size: .88rem; line-height: 1.65; }
+
+.skills-stage { position: relative; display: flex; min-height: 555px; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; isolation: isolate; }
+.skills-orbit { position: absolute; z-index: -1; top: 48%; left: 50%; width: min(780px,100%); height: 250px; border: 1px solid rgba($red,.14); border-radius: 50%; opacity: .55; pointer-events: none; &--one { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(-14deg); animation: skillsOrbit 28s linear infinite; } &--two { width: min(620px,80%); height: 320px; border-color: rgba(255,255,255,.08); transform: translate(-50%,-50%) rotateY(66deg) rotateZ(18deg); animation: skillsOrbit 36s linear infinite reverse; } }
+
+.skills-showcase { display: grid; width: min(900px,100%); grid-template-columns: minmax(270px,1fr) minmax(340px,1.15fr); align-items: center; gap: clamp(2rem,6vw,5rem); }
+.skills-cube-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; perspective: 1100px; }
+.skills-cube { position: relative; width: $cube-size; height: $cube-size; transform-style: preserve-3d; animation: skillsDiceRoll 36s linear infinite; }
+.skills-cube__face { appearance: none; position: absolute; inset: 0; display: flex; width: $cube-size; height: $cube-size; flex-direction: column; align-items: center; justify-content: center; gap: .72rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,.4); border-radius: 25px; background: linear-gradient(145deg,rgba(255,255,255,.12),rgba(33,23,23,.94) 42%,rgba(9,9,9,.98)); box-shadow: inset 0 1px rgba(255,255,255,.23), inset 0 -14px 28px rgba(0,0,0,.4), 0 18px 48px rgba(0,0,0,.34); color: $silver; cursor: pointer; backface-visibility: hidden; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, color .2s ease; &::after { content: ''; position: absolute; inset: 9px; border: 1px solid rgba($red,.14); border-radius: 18px; pointer-events: none; } }
+.skills-cube__face--front { transform: translateZ($cube-depth); }
+.skills-cube__face--back { transform: rotateY(180deg) translateZ($cube-depth); }
+.skills-cube__face--right { transform: rotateY(90deg) translateZ($cube-depth); }
+.skills-cube__face--left { transform: rotateY(-90deg) translateZ($cube-depth); }
+.skills-cube__face--top { transform: rotateX(90deg) translateZ($cube-depth); }
+.skills-cube__face--bottom { transform: rotateX(-90deg) translateZ($cube-depth); }
+.skills-cube__face:hover, .skills-cube__face:focus-visible, .skills-cube__face.is-active { border-color: rgba($red,.95); background: linear-gradient(145deg,rgba($red,.22),rgba(27,14,14,.97) 48%,#090909); box-shadow: inset 0 1px rgba(255,255,255,.24), inset 0 0 35px rgba($red,.12), 0 0 30px rgba($red,.18); color: #fff; }
+.skills-cube__face:focus-visible { outline: 2px solid rgba($red,.85); outline-offset: 5px; }
+.skills-cube__mark { color: $red; font-size: clamp(3.1rem,7vw,4.5rem); font-weight: 850; letter-spacing: -.07em; line-height: 1; text-shadow: 0 0 28px rgba($red,.24); }
+.skills-cube__name { color: #f1eeee; font-size: 1.35rem; font-weight: 750; letter-spacing: -.025em; }
+.skills-cube__category { color: #9d9694; font-size: .61rem; font-weight: 650; letter-spacing: .18em; text-align: center; text-transform: uppercase; }
+.skills-cube-hint { color: #756d6b; font-size: .55rem; font-weight: 650; letter-spacing: .2em; text-align: center; }
+
+.skills-extra-panel { padding: 1.25rem; border: 1px solid rgba($red,.32); border-radius: 18px; background: linear-gradient(145deg,rgba(28,24,24,.92),rgba(8,8,8,.95)); box-shadow: 0 18px 48px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.08); }
+.skills-extra-panel__label { margin-bottom: .9rem; color: $red; font-size: .62rem; font-weight: 700; letter-spacing: .22em; }
+.skills-extra-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .65rem; }
+.skills-extra { appearance: none; display: flex; min-height: 52px; align-items: center; gap: .7rem; padding: .65rem .75rem; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: rgba(0,0,0,.62); color: #d5d0ce; font: inherit; font-size: .76rem; font-weight: 650; text-align: left; cursor: pointer; transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease; }
+.skills-extra__logo { display: grid; width: 28px; height: 28px; flex: 0 0 28px; place-items: center; color: $red; filter: drop-shadow(0 0 8px rgba($red,.2)); }
+.skills-extra__logo svg { display: block; width: 100%; height: 100%; color: inherit; }
+.skills-extra:hover, .skills-extra:focus-visible, .skills-extra.is-active { transform: translateY(-2px); border-color: rgba($red,.78); background: rgba($red,.12); color: #fff; }
+.skills-extra:focus-visible { outline: 2px solid rgba($red,.8); outline-offset: 3px; }
+
+.skill-detail { display: grid; width: min(640px,100%); min-height: 100px; grid-template-columns: 1fr; align-content: center; gap: .25rem; padding: 1rem 1.25rem; border: 1px solid rgba($red,.4); border-radius: 14px; background: rgba(13,12,12,.92); box-shadow: 0 12px 32px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.05); text-align: center; }
+.skill-detail.is-empty { visibility: hidden; }
+.skill-detail__eyebrow { color: $red; font-size: .59rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+.skill-detail h3 { color: #f3f0ef; font-size: 1.08rem; font-weight: 750; }
+.skill-detail p { color: #aaa4a2; font-size: .76rem; line-height: 1.5; }
+
+@keyframes skillsDiceRoll { 0% { transform: rotateX(-12deg) rotateY(0deg); } 25% { transform: rotateX(78deg) rotateY(90deg); } 50% { transform: rotateX(168deg) rotateY(180deg); } 75% { transform: rotateX(258deg) rotateY(270deg); } 100% { transform: rotateX(348deg) rotateY(360deg); } }
+@keyframes skillsOrbit { to { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(346deg); } }
+
+@media (max-width: 780px) {
+  .skills-section { padding: 5rem 5vw 4rem; }
+  .skills-stage { min-height: 760px; }
+  .skills-showcase { width: min(520px,100%); grid-template-columns: 1fr; gap: 1.5rem; }
+  .skills-extra-panel { width: 100%; }
+  .skill-detail { width: min(520px,100%); }
+}
+
+@media (max-width: 480px) {
+  $mobile-size: 220px;
+  $mobile-depth: 110px;
+  .skills-stage { min-height: 740px; }
+  .skills-showcase { gap: 1.2rem; }
+  .skills-cube { width: $mobile-size; height: $mobile-size; }
+  .skills-cube__face { width: $mobile-size; height: $mobile-size; border-radius: 22px; }
+  .skills-cube__face--front { transform: translateZ($mobile-depth); }
+  .skills-cube__face--back { transform: rotateY(180deg) translateZ($mobile-depth); }
+  .skills-cube__face--right { transform: rotateY(90deg) translateZ($mobile-depth); }
+  .skills-cube__face--left { transform: rotateY(-90deg) translateZ($mobile-depth); }
+  .skills-cube__face--top { transform: rotateX(90deg) translateZ($mobile-depth); }
+  .skills-cube__face--bottom { transform: rotateX(-90deg) translateZ($mobile-depth); }
+  .skills-extra-panel { padding: .9rem; }
+  .skills-extra-grid { gap: .5rem; }
+  .skills-extra { min-height: 46px; gap: .5rem; padding: .5rem; font-size: .68rem; }
+  .skills-extra__logo { width: 25px; height: 25px; flex-basis: 25px; }
+  .skills-orbit--two { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-cube, .skills-orbit { animation: none; }
+  .skills-cube { transform: rotateX(-12deg) rotateY(-20deg); }
+  .skills-cube__face, .skills-extra { transition: none; }
+}

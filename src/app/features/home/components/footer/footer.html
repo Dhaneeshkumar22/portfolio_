@@ -1,0 +1,18 @@
+<footer class="footer">
+  <div class="footer__main">
+    <div class="footer__social">
+      @for (link of socialLinks; track link.label) {
+        <a
+          class="footer__social-link"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ link.label }}</a>
+      }
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span class="footer__copyright">&copy; {{ currentYear }} Dhaneeshkumar M. All rights reserved.</span>
+  </div>
+</footer>

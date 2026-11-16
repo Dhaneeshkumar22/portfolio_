@@ -1,0 +1,74 @@
+$red: #d41514;
+$silver: #cdcbca;
+$cube-size: 310px;
+$cube-depth: 155px;
+
+:host { display: block; width: 100%; height: 100%; }
+
+.profile-dice { position: relative; display: grid; width: 100%; height: 100%; min-height: 500px; place-items: center; overflow: visible; perspective: 1300px; isolation: isolate; }
+.profile-dice__cube { position: relative; z-index: 2; width: $cube-size; height: $cube-size; transform-style: preserve-3d; animation: profileDiceTumble 40s linear infinite; }
+.profile-dice__face { position: absolute; inset: 0; display: flex; width: $cube-size; height: $cube-size; flex-direction: column; align-items: center; justify-content: center; gap: .7rem; padding: 1.5rem; overflow: hidden; border: 1px solid rgba(225,220,218,.38); border-radius: 22px; background: linear-gradient(145deg,rgba(62,56,56,.97),rgba(27,25,26,.99) 48%,rgba(9,9,10,.99)); box-shadow: inset 0 1px rgba(255,255,255,.18), inset 0 -16px 35px rgba(0,0,0,.42), 0 0 30px rgba($red,.09); color: $silver; -webkit-backface-visibility: hidden; backface-visibility: hidden; &::before { content: ''; position: absolute; inset: 9px; border: 1px solid rgba($red,.18); border-radius: 15px; pointer-events: none; } svg { position: relative; z-index: 1; width: 52px; height: 52px; color: $red; filter: drop-shadow(0 0 12px rgba($red,.2)); } strong { position: relative; z-index: 1; max-width: 100%; color: #f0edeb; font-size: 1.13rem; font-weight: 780; letter-spacing: .035em; line-height: 1.2; text-align: center; text-wrap: balance; } }
+.profile-dice__eyebrow { position: relative; z-index: 1; color: $red; font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-align: center; }
+.profile-dice__detail { position: relative; z-index: 1; color: #9b9492; font-size: .67rem; line-height: 1.45; text-align: center; }
+.profile-dice__face--front { transform: translateZ($cube-depth); }
+.profile-dice__face--back { transform: rotateY(180deg) translateZ($cube-depth); }
+.profile-dice__face--right { transform: rotateY(90deg) translateZ($cube-depth); }
+.profile-dice__face--left { transform: rotateY(-90deg) translateZ($cube-depth); }
+.profile-dice__face--top { transform: rotateX(90deg) translateZ($cube-depth); }
+.profile-dice__face--bottom { transform: rotateX(-90deg) translateZ($cube-depth); }
+.profile-dice__orbit { position: absolute; z-index: 1; top: 48%; left: 50%; width: min(540px,94%); height: 190px; border: 1px solid rgba(205,203,202,.15); border-radius: 50%; box-shadow: 0 0 24px rgba($red,.06), inset 0 0 16px rgba($red,.035); pointer-events: none; &--one { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(-20deg); animation: profileOrbit 25s linear infinite; } &--two { width: min(420px,74%); height: 280px; border-color: rgba($red,.22); transform: translate(-50%,-50%) rotateY(65deg) rotateZ(16deg); animation: profileOrbitTilt 30s linear infinite reverse; } }
+.profile-dice__glow { position: absolute; z-index: 0; bottom: 16%; left: 50%; width: 220px; height: 48px; border-radius: 50%; background: rgba($red,.17); filter: blur(32px); transform: translateX(-50%) rotateX(70deg); animation: profileGlow 4s ease-in-out infinite alternate; }
+.profile-dice__base { position: absolute; z-index: 1; bottom: 13%; left: 50%; width: 215px; height: 20px; border: 1px solid rgba($red,.2); border-radius: 50%; background: linear-gradient(90deg,transparent,rgba($red,.08),transparent); box-shadow: 0 9px 20px rgba(0,0,0,.4); transform: translateX(-50%) rotateX(68deg); }
+
+@keyframes profileDiceTumble {
+  0% { transform: rotateX(-13deg) rotateY(0deg) rotateZ(-5deg); }
+  25% { transform: rotateX(77deg) rotateY(90deg) rotateZ(85deg); }
+  50% { transform: rotateX(167deg) rotateY(180deg) rotateZ(175deg); }
+  75% { transform: rotateX(257deg) rotateY(270deg) rotateZ(265deg); }
+  100% { transform: rotateX(347deg) rotateY(360deg) rotateZ(355deg); }
+}
+@keyframes profileOrbit { from { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(-20deg); } to { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(340deg); } }
+@keyframes profileOrbitTilt { from { transform: translate(-50%,-50%) rotateY(65deg) rotateZ(16deg); } to { transform: translate(-50%,-50%) rotateY(65deg) rotateZ(376deg); } }
+@keyframes profileGlow { from { opacity: .42; scale: .88; } to { opacity: .85; scale: 1.08; } }
+
+@media (max-width: 1100px) {
+  $tablet-size: 220px;
+  $tablet-depth: 110px;
+  .profile-dice { min-height: 320px; }
+  .profile-dice__cube, .profile-dice__face { width: $tablet-size; height: $tablet-size; }
+  .profile-dice__face--front { transform: translateZ($tablet-depth); }
+  .profile-dice__face--back { transform: rotateY(180deg) translateZ($tablet-depth); }
+  .profile-dice__face--right { transform: rotateY(90deg) translateZ($tablet-depth); }
+  .profile-dice__face--left { transform: rotateY(-90deg) translateZ($tablet-depth); }
+  .profile-dice__face--top { transform: rotateX(90deg) translateZ($tablet-depth); }
+  .profile-dice__face--bottom { transform: rotateX(-90deg) translateZ($tablet-depth); }
+  .profile-dice__face svg { width: 42px; height: 42px; }
+  .profile-dice__face strong { font-size: .95rem; }
+  .profile-dice__orbit { height: 150px; }
+  .profile-dice__orbit--two { height: 210px; }
+}
+
+@media (max-width: 767px) {
+  $mobile-size: 175px;
+  $mobile-depth: 87.5px;
+  .profile-dice { min-height: 230px; }
+  .profile-dice__cube, .profile-dice__face { width: $mobile-size; height: $mobile-size; border-radius: 14px; }
+  .profile-dice__face { gap: .42rem; padding: .8rem; &::before { inset: 6px; border-radius: 9px; } svg { width: 33px; height: 33px; } strong { font-size: .75rem; } }
+  .profile-dice__face--front { transform: translateZ($mobile-depth); }
+  .profile-dice__face--back { transform: rotateY(180deg) translateZ($mobile-depth); }
+  .profile-dice__face--right { transform: rotateY(90deg) translateZ($mobile-depth); }
+  .profile-dice__face--left { transform: rotateY(-90deg) translateZ($mobile-depth); }
+  .profile-dice__face--top { transform: rotateX(90deg) translateZ($mobile-depth); }
+  .profile-dice__face--bottom { transform: rotateX(-90deg) translateZ($mobile-depth); }
+  .profile-dice__eyebrow { font-size: .45rem; }
+  .profile-dice__detail { font-size: .53rem; }
+  .profile-dice__orbit { height: 120px; }
+  .profile-dice__orbit--two { height: 165px; }
+  .profile-dice__glow { bottom: 9%; width: 150px; }
+  .profile-dice__base { bottom: 7%; width: 150px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-dice__cube, .profile-dice__orbit, .profile-dice__glow { animation: none; }
+  .profile-dice__cube { transform: rotateX(-13deg) rotateY(-20deg); }
+}

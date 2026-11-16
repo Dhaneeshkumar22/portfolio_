@@ -1,0 +1,110 @@
+<section id="contact" class="contact">
+  <div class="contact__label">GET IN TOUCH</div>
+  <div class="contact__accent"></div>
+
+  <div class="contact__grid">
+    <!-- Left Column -->
+    <div class="contact__info">
+      <h2 class="contact__headline">Let's Work Together</h2>
+      <p class="contact__subtext">
+        Have a project in mind or want to discuss an idea? I'd love to hear from you.
+      </p>
+
+      <ul class="contact__details">
+        <li class="contact__detail">
+          <svg class="contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <a href="mailto:kumardhaneesh53@gmail.com" class="contact__link">kumardhaneesh53&#64;gmail.com</a>
+        </li>
+        <li class="contact__detail">
+          <svg class="contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Tamil Nadu, India</span>
+        </li>
+      </ul>
+
+      <div class="contact__socials">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact__social-link">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact__social-link">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="contact__form-wrap">
+      @if (submitted) {
+        <div class="contact__success">
+          <span class="contact__success-icon">✓</span>
+          <p>Your email app should open with the message ready to send. Send it there to reach me.</p>
+          <button type="button" class="contact__btn contact__btn--outline" (click)="submitted = false">Edit Message</button>
+        </div>
+      } @else {
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form" novalidate>
+          <!-- Name -->
+          <div class="contact__field">
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Your Name"
+              class="contact__input"
+              [class.contact__input--error]="contactForm.get('name')!.touched && contactForm.get('name')!.invalid"
+            />
+            @if (contactForm.get('name')!.touched && contactForm.get('name')!.hasError('required')) {
+              <span class="contact__error">Name is required.</span>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="contact__field">
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Your Email"
+              class="contact__input"
+              [class.contact__input--error]="contactForm.get('email')!.touched && contactForm.get('email')!.invalid"
+            />
+            @if (contactForm.get('email')!.touched && contactForm.get('email')!.hasError('required')) {
+              <span class="contact__error">Email is required.</span>
+            }
+            @if (contactForm.get('email')!.touched && contactForm.get('email')!.hasError('email') && !contactForm.get('email')!.hasError('required')) {
+              <span class="contact__error">Please enter a valid email.</span>
+            }
+          </div>
+
+          <!-- Subject -->
+          <div class="contact__field">
+            <input
+              type="text"
+              formControlName="subject"
+              placeholder="Subject"
+              class="contact__input"
+              [class.contact__input--error]="contactForm.get('subject')!.touched && contactForm.get('subject')!.invalid"
+            />
+            @if (contactForm.get('subject')!.touched && contactForm.get('subject')!.hasError('required')) {
+              <span class="contact__error">Subject is required.</span>
+            }
+          </div>
+
+          <!-- Message -->
+          <div class="contact__field">
+            <textarea
+              formControlName="message"
+              placeholder="Your Message"
+              rows="5"
+              class="contact__input contact__input--textarea"
+              [class.contact__input--error]="contactForm.get('message')!.touched && contactForm.get('message')!.invalid"
+            ></textarea>
+            @if (contactForm.get('message')!.touched && contactForm.get('message')!.hasError('required')) {
+              <span class="contact__error">Message is required.</span>
+            }
+          </div>
+
+          <button type="submit" class="contact__btn">Send Message <span aria-hidden="true">→</span></button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

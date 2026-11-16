@@ -1,0 +1,60 @@
+<section id="skills" class="skills-section" aria-labelledby="skills-title">
+  <div class="skills-container">
+    <div class="skills-heading">
+      <span class="section-label">TECH STACK</span>
+      <div class="accent-line"></div>
+      <h2 id="skills-title" class="section-headline">My toolkit</h2>
+      <p class="skills-intro">A hands-on stack for building interfaces, services, and reliable applications.</p>
+    </div>
+
+    <div class="skills-stage" (mouseleave)="clearPreview()">
+      <div class="skills-orbit skills-orbit--one" aria-hidden="true"></div>
+      <div class="skills-orbit skills-orbit--two" aria-hidden="true"></div>
+
+      <div class="skills-showcase">
+        <div class="skills-cube-wrap">
+          <div class="skills-cube" role="group" aria-label="Rotating cube of core skills">
+            @for (skill of featuredSkills; track skill.name) {
+              <button type="button" [class]="'skills-cube__face skills-cube__face--' + skill.face" [class.is-active]="currentSkill === skill" [attr.aria-pressed]="pinnedSkill === skill" [attr.aria-label]="skill.name + ': ' + skill.detail" (mouseenter)="previewSkill(skill)" (focus)="previewSkill(skill)" (blur)="clearPreview(skill)" (click)="toggleSkill(skill)">
+                <span class="skills-cube__mark" aria-hidden="true">{{ skill.mark }}</span>
+                <span class="skills-cube__name">{{ skill.name }}</span>
+                <span class="skills-cube__category">{{ skill.category }}</span>
+              </button>
+            }
+          </div>
+          <p class="skills-cube-hint">HOVER OR SELECT A FACE</p>
+        </div>
+
+        <div class="skills-extra-panel" aria-label="More skills">
+          <p class="skills-extra-panel__label">MORE SKILLS</p>
+          <div class="skills-extra-grid">
+            @for (skill of extraSkills; track skill.name) {
+              <button type="button" class="skills-extra" [class.is-active]="currentSkill === skill" [attr.aria-pressed]="pinnedSkill === skill" (mouseenter)="previewSkill(skill)" (focus)="previewSkill(skill)" (blur)="clearPreview(skill)" (click)="toggleSkill(skill)">
+                <span class="skills-extra__logo" aria-hidden="true">
+                  @switch (skill.name) {
+                    @case ('Python') { <svg viewBox="0 0 48 48"><path d="M23 5h8a7 7 0 0 1 7 7v8H19a6 6 0 0 0-6 6v2h-2a6 6 0 0 1-6-6v-4a7 7 0 0 1 7-7h11V5Z" fill="currentColor"/><path d="M25 43h-8a7 7 0 0 1-7-7v-8h19a6 6 0 0 0 6-6v-2h2a6 6 0 0 1 6 6v4a7 7 0 0 1-7 7H25v6Z" fill="currentColor"/><circle cx="25" cy="10" r="1.7" fill="#0b0a0a"/><circle cx="23" cy="38" r="1.7" fill="#0b0a0a"/></svg> }
+                    @case ('JavaScript') { <svg viewBox="0 0 48 48"><path d="M8 5h32a3 3 0 0 1 3 3v32a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" fill="currentColor"/><path d="m17 18-6 6 6 6m14-12 6 6-6 6m-5-15-4 18" fill="none" stroke="#0b0a0a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg> }
+                    @case ('Docker') { <svg viewBox="0 0 48 48"><g fill="currentColor"><path d="M8 15h7v6H8zm8 0h7v6h-7zm8 0h7v6h-7zm-8-7h7v6h-7zm8 0h7v6h-7zm8 7h7v6h-7z"/><path d="M7 23h34c-1 10-7 16-18 16-9 0-15-5-18-13h2v-3Z"/></g><path d="M38 20c3-4 7-4 9-2-1 4-4 6-8 6" fill="currentColor"/></svg> }
+                    @case ('Git') { <svg viewBox="0 0 48 48"><path d="M21 4a4 4 0 0 1 6 0l17 17a4 4 0 0 1 0 6L27 44a4 4 0 0 1-6 0L4 27a4 4 0 0 1 0-6L21 4Z" fill="currentColor"/><path d="m16 16 16 16M22 22l8-8M22 22v10" fill="none" stroke="#0b0a0a" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="16" r="2.5" fill="#0b0a0a"/><circle cx="30" cy="14" r="2.5" fill="#0b0a0a"/><circle cx="22" cy="32" r="2.5" fill="#0b0a0a"/></svg> }
+                    @case ('HTML') { <svg viewBox="0 0 48 48"><path d="M7 4h34l-3 36-14 5-14-5L7 4Z" fill="currentColor"/><path d="m14 13 10-5 10 5-2 22-8 3-8-3-1-8h5l.5 4 3.5 1 3.5-1 .5-6H16l-1-5h15l.4-4H15l-1-5Z" fill="#0b0a0a"/></svg> }
+                    @case ('Node') { <svg viewBox="0 0 48 48"><path d="m24 3 18 10v22L24 45 6 35V13L24 3Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="24" cy="17" r="3" fill="currentColor"/><circle cx="15" cy="31" r="3" fill="currentColor"/><circle cx="33" cy="31" r="3" fill="currentColor"/><path d="m22 20-5 8m9-8 5 8m-13 3h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg> }
+                    @case ('DSA') { <svg viewBox="0 0 48 48"><path d="M24 11v10M12 35V25h24v10M24 21H12v4m12-4h12v4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="8" r="5" fill="currentColor"/><circle cx="12" cy="39" r="5" fill="currentColor"/><circle cx="36" cy="39" r="5" fill="currentColor"/></svg> }
+                  }
+                </span>
+                <span>{{ skill.name }}</span>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <aside class="skill-detail" [class.is-empty]="!currentSkill" aria-live="polite">
+        @if (currentSkill; as skill) {
+          <span class="skill-detail__eyebrow">{{ skill.category }}</span>
+          <h3>{{ skill.name }}</h3>
+          <p>{{ skill.detail }}</p>
+        }
+      </aside>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+<section id="projects" class="projects-section" aria-labelledby="projects-title">
+  <div class="projects-container">
+    <div class="section-header">
+      <span class="section-label">SELECTED WORK</span>
+      <div class="accent-line"></div>
+      <div class="section-title-row">
+        <h2 id="projects-title" class="section-headline">Projects in motion</h2>
+        <p class="section-intro">A connected path through products, experiments, and ideas built for real people.</p>
+      </div>
+    </div>
+
+    <div class="tree-heading" aria-hidden="true">
+      <span>BUILD SEQUENCE</span><span><i></i> 07 PROJECTS</span>
+    </div>
+    <ol class="project-tree" aria-label="Seven projects in numbered sequence">
+      @for (project of projects; track project.number; let index = $index) {
+        <li [class]="'project-node project-node--' + (index % 2 === 0 ? 'left' : 'right')">
+          <span class="project-marker" aria-hidden="true"><i></i>{{ project.number }}</span>
+          <article class="project-card">
+            <div class="project-card__eyebrow"><span>PROJECT / {{ project.number }}</span><span class="project-card__status"><i></i> BUILT</span></div>
+            <h3 class="project-name">{{ project.name }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-tech" aria-label="Technologies used">
+              @for (tag of project.tech; track tag) {
+                <span class="tech-chip">{{ tag }}</span>
+              }
+            </div>
+            @if (project.demo || project.github) {
+              <div class="project-links">
+                @if (project.demo) {
+                  <a class="project-link project-link--primary" [href]="project.demo" target="_blank" rel="noopener noreferrer">
+                    <span>Live project</span><span aria-hidden="true">↗</span>
+                  </a>
+                }
+                @if (project.github) {
+                  <a class="project-link" [href]="project.github" target="_blank" rel="noopener noreferrer">
+                    <span>GitHub profile</span><span aria-hidden="true">↗</span>
+                  </a>
+                }
+              </div>
+            }
+          </article>
+        </li>
+      }
+    </ol>
+    <div class="tree-end"><span></span> MORE IDEAS IN PROGRESS</div>
+  </div>
+</section>

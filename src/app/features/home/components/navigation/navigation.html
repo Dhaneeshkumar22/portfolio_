@@ -1,0 +1,12 @@
+<header class="site-nav" aria-label="Main navigation">
+  <a class="site-nav__brand" href="#home" aria-label="Dhaneesh, home">
+    <span class="site-nav__monogram">D</span>
+    <span class="site-nav__wordmark">DHANEESH</span>
+  </a>
+  <nav class="site-nav__links" aria-label="Page sections">
+    @for (link of links; track link.target) {
+      <a [href]="'#' + link.target">{{ link.label }}</a>
+    }
+  </nav>
+  <a class="site-nav__contact" href="#contact">Let's talk</a>
+</header>

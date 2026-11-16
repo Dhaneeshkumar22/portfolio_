@@ -1,0 +1,50 @@
+<section class="about" id="about">
+  <div class="about__network" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="about-loop-color" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d41514" stop-opacity=".1"/><stop offset=".48" stop-color="#d8d3d1" stop-opacity=".55"/><stop offset="1" stop-color="#d41514" stop-opacity=".25"/></linearGradient>
+        <filter id="about-loop-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4" result="soft"/><feMerge><feMergeNode in="soft"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <path id="about-loop-path" class="about__loop about__loop--primary" d="M-120 380 C140 65 430 50 720 380 S1300 695 1560 380 C1300 65 1010 50 720 380 S140 695 -120 380Z" />
+      <path class="about__loop about__loop--secondary" d="M-100 380 C210 180 460 180 720 380 S1230 580 1540 380 C1230 180 980 180 720 380 S210 580 -100 380Z" />
+      <path class="about__loop about__loop--orbit" d="M120 380 C120 165 440 95 720 160 C1000 95 1320 165 1320 380 C1320 595 1000 665 720 600 C440 665 120 595 120 380Z" />
+      <g class="about__loop-nodes" filter="url(#about-loop-glow)">
+        <circle cx="720" cy="380" r="4" />
+        <circle cx="360" cy="215" r="3" />
+        <circle cx="1080" cy="545" r="3" />
+        <circle cx="1080" cy="215" r="2.5" />
+        <circle cx="360" cy="545" r="2.5" />
+        <circle r="4"><animateMotion dur="18s" repeatCount="indefinite"><mpath href="#about-loop-path" /></animateMotion></circle>
+        <circle r="2.8" class="about__moving-node"><animateMotion dur="25s" begin="-9s" repeatCount="indefinite"><mpath href="#about-loop-path" /></animateMotion></circle>
+      </g>
+    </svg>
+  </div>
+
+  <div class="about__content">
+    <span class="about__label">ABOUT / THE APPROACH</span>
+    <div class="about__divider"></div>
+
+    <div class="about__grid">
+      <figure class="about__portrait">
+        <img src="/images/dhaneesh-portrait.png" alt="Portrait of Dhaneeshkumar M" loading="lazy" />
+        <figcaption><span></span> DHANEESHKUMAR M <small>FULL STACK ENGINEER</small></figcaption>
+      </figure>
+      <div class="about__col-right">
+        <h2 class="about__headline">Ideas into<br /><span>useful software.</span></h2>
+        <p class="about__body">
+          I’m <strong>Dhaneeshkumar M</strong>, a full-stack developer who enjoys turning complex ideas into clear, dependable digital products. From tools that help students learn and work together to commerce experiences and data-driven apps, I build thoughtful interfaces backed by reliable systems.
+        </p>
+        <div class="about__focus" aria-label="Areas of focus">
+          <span>Product thinking</span><i></i><span>Full-stack craft</span><i></i><span>Human-centered details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__pillars" aria-label="How I build">
+      <article class="about__pillar"><span>01 / EXPERIENCE</span><h3>Thoughtful interfaces</h3><p>Make every screen clear, useful, and easy to move through.</p></article>
+      <article class="about__pillar"><span>02 / ENGINEERING</span><h3>End-to-end craft</h3><p>Connect the interface, APIs, data, and delivery into one product.</p></article>
+      <article class="about__pillar"><span>03 / PURPOSE</span><h3>Built around people</h3><p>Solve real needs with dependable software that can keep growing.</p></article>
+    </div>
+  </div>
+
+</section>

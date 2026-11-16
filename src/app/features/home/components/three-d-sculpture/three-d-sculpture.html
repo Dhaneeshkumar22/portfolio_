@@ -1,0 +1,15 @@
+@if (webGLSupported) {
+  <div
+    class="sculpture-container"
+    #sculptureContainer
+    (mousemove)="onMouseMove($event)"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <canvas #sculptureCanvas></canvas>
+  </div>
+} @else {
+  <div class="webgl-fallback">
+    <img src="assets/sculpture-fallback.webp" alt="Dhaneesh Abstract Sculpture" />
+  </div>
+}

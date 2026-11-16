@@ -1,0 +1,253 @@
+/* ═══════════════════════════════════════════════════════════════
+   BRAND TOKENS
+   ═══════════════════════════════════════════════════════════ */
+$black:  #080808;
+$silver: #cdcbca;
+$red:    #d41514;
+$muted:  #666;
+$dim:    #444;
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 8rem 6vw 4rem;
+  background: rgba($black, 0.86);
+  overflow: hidden;
+  gap: 2rem;
+}
+
+/* ── Left text column ── */
+.hero__text {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Name — oversized editorial */
+.hero__name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: $silver;
+  margin: 0 0 1.2rem;
+}
+.hero__name-line {
+  display: block;
+}
+.hero__name-line--muted {
+  color: $muted;
+}
+
+/* Professional title */
+.hero__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: $red;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero__title--sep {
+  color: $dim;
+  margin: 0 0.15em;
+}
+
+/* Headline */
+.hero__headline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: $silver;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+/* Intro paragraph */
+.hero__intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: $muted;
+  margin-bottom: 2.5rem;
+  max-width: 460px;
+}
+
+/* ── CTAs ── */
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.hero__cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  &--primary {
+    background: $red;
+    color: #fff;
+    border: 1px solid $red;
+
+    &:hover {
+      background: color-mix(in srgb, $red 80%, black);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba($red, 0.25);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $silver;
+    border: 1px solid rgba($silver, 0.18);
+
+    &:hover {
+      border-color: rgba($silver, 0.5);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+/* ── Scroll indicator ── */
+.hero__scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero__scroll-track {
+  width: 1px;
+  height: 48px;
+  background: rgba($silver, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+.hero__scroll-thumb {
+  width: 100%;
+  height: 16px;
+  background: $red;
+  position: absolute;
+  top: 0;
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+.hero__scroll-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: $dim;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { top: 0; opacity: 1; }
+  50%      { top: 32px; opacity: 0.4; }
+}
+
+/* ── Sculpture (right side) ── */
+.hero__sculpture {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 55%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 500px;
+  max-width: 60%;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 5vw 2rem;
+    gap: 1rem;
+  }
+  .hero__text {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hero__intro {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__actions {
+    justify-content: center;
+  }
+  .hero__scroll {
+    justify-content: center;
+  }
+  .hero__sculpture {
+    max-width: 100%;
+    height: 50vh;
+    min-height: 320px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero {
+    padding: 4rem 4vw 1.5rem;
+  }
+  .hero__name {
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+  }
+  .hero__sculpture {
+    height: 42vh;
+    min-height: 260px;
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero__cta {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  .hero__scroll {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-thumb {
+    animation: none;
+    top: 0;
+  }
+}
